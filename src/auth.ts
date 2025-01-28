@@ -9,12 +9,7 @@ const GITHUB_CLIENT_SECRET = process.env.GITHUB_CLIENT_SECRET;
 if (!GITHUB_CLIENT_ID || !GITHUB_CLIENT_SECRET)
   throw new Error('Missing Github OAuth Credentials');
 
-export const {
-  handlers: { GET, POST },
-  auth,
-  signOut,
-  signIn,
-} = NextAuth({
+export const { signOut, signIn, handlers, auth } = NextAuth({
   adapter: PrismaAdapter(db),
   providers: [
     Github({
